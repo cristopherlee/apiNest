@@ -6,7 +6,6 @@ import { CreateUserDto } from './dto/user-create.dto';
 import { User } from './user.entity';
 import { UserUpdateDto } from './dto/user-update.dto';
 
-
 /**
  * This class is responsible for validating the bring between 
  * what is requested and what is returned

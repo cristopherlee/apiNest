@@ -12,10 +12,11 @@ async function bootstrap() {
     .setTitle('API RESTFUL')
     .setDescription('The API Users Documentation')
     .setVersion('0.0.1')
-    .addTag('Users')
+    // .addTag('Users')
     .build();
+
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('swagger', app, document);
+  SwaggerModule.setup('api', app, document);
 
   await app.listen(3000);
 }

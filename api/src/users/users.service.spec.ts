@@ -35,6 +35,7 @@ describe('UsersService', () => {
     expect(service).toBeDefined();
     expect(userRepository).toBeDefined();
   });
+
   describe('createUser', () => {
     let mockCreateUserDto: CreateUserDto;
 
@@ -63,7 +64,6 @@ describe('UsersService', () => {
     });
   });
 
-
   describe('findUserById', () => {
     it('BUSCANDO USER POR ID', async () => {
       userRepository.findOne.mockResolvedValue('mockUser');
@@ -80,7 +80,6 @@ describe('UsersService', () => {
       expect(service.findUserById('mockId')).rejects.toThrow(NotFoundException);
     });
   });
-
 
   describe('deleteUser', () => {
     it('retorna a quantidade de usuários deletados', async () => {

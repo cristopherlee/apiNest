@@ -10,7 +10,6 @@ import { ConflictException, InternalServerErrorException } from "@nestjs/common"
 @EntityRepository(User)
 export class UserRepository extends Repository<User> {
 
-
   /**
    * This method is responsible for creating a user
    * @param createUserDto 
@@ -18,42 +17,39 @@ export class UserRepository extends Repository<User> {
    */
   async createUser(createUserDto: CreateUserDto): Promise<User> {
 
-    const {email, name} = createUserDto;
+    const { email, name } = createUserDto;
 
     let userValid = false;
     let errorMsg = '';
 
-    
-    if(!email) {
+    if (!email) {
       userValid = false;
       errorMsg = 'Email vazio.';
-    }else if (!name) {
+    } else if (!name) {
       userValid = false;
       errorMsg = 'O nome é Obrigatório.'
     } else {
       userValid = true;
     }
 
-
-    if(userValid){
+    if (userValid) {
       const user = this.create();
       user.email = email;
       user.name = name;
       try {
         await user.save();
         return user;
-      }catch (error){
-        if(error.code.toString() === '23505'){
+      } catch (error) {
+        if (error.code.toString() === '23505') {
           throw new ConflictException('Endereço de email já está em uso');
-        }else{
+        } else {
           throw new InternalServerErrorException('Erro ao salvar o usuário no banco de dados');
         }
       }
-    }else{
+    } else {
       throw new ConflictException(errorMsg);
     }
   }
-
 
   /**
    * 
@@ -64,5 +60,4 @@ export class UserRepository extends Repository<User> {
     const users = this.find();
     return users;
   }
-
 }

@@ -1,4 +1,5 @@
 /* eslint-disable prettier/prettier */
+import { ApiProperty } from "@nestjs/swagger";
 import { 
   BaseEntity, Column, 
   CreateDateColumn, Entity, 
@@ -13,18 +14,23 @@ import {
 @Unique(['email'])
 export class User extends BaseEntity {
 
+  @ApiProperty()
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
+  @ApiProperty()
   @Column({nullable: false, type: 'varchar', length: 200})
   email: string;
 
+  @ApiProperty()
   @Column({nullable: false, type: 'varchar', length: 200})
   name: string;
 
+  @ApiProperty()
   @CreateDateColumn()
   createdAt: Date;
 
+  @ApiProperty()
   @UpdateDateColumn()
   updatedAt: Date;
 }

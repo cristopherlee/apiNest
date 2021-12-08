@@ -2,6 +2,12 @@
 /dist
 /node_modules
 
+/api/dist/*
+/api/node_modules
+/api/coverage
+/api/storage
+
+dist
 # Logs
 logs
 *.log
