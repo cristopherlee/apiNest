@@ -7,8 +7,8 @@ import { ReturnUserDto } from './dto/user-return.dto';
 import { UserUpdateDto } from './dto/user-update.dto';
 import { ApiBadRequestResponse, ApiCreatedResponse, ApiNotFoundResponse, ApiOkResponse, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { User } from './user.entity';
-import { BadRequestSwagger } from 'src/helpers/swagger/bad-request.swagger';
-import { NotFoundSwagger } from 'src/helpers/swagger/not-found.swagger';
+import { BadRequestSwagger } from '../helpers/swagger/bad-request.swagger';
+import { NotFoundSwagger } from '../helpers/swagger/not-found.swagger';
 
 /**
  * This class represents the reuturn transaction object
