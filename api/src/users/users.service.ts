@@ -32,11 +32,18 @@ export class UsersService {
    * @returns user object json
    */
   async findUserById(userId: string): Promise<User> {
-    const user = await this.userRepository.findOne(userId, {
-      select: ['email', 'name', 'id'],
-    });
-    if (!user) throw new NotFoundException('Usuário não encontrado');
-    return user;
+    
+    try {
+      const user = await this.userRepository.findOne(userId, {
+        select: ['email', 'name', 'id'],
+      });
+      
+      if (!user) throw new NotFoundException('Usuário não encontrado');
+      
+      return user;
+    } catch (error) {
+      throw new NotFoundException(error.message);
+    }
   }
 
   /**
@@ -55,6 +62,9 @@ export class UsersService {
    * @returns message success
    */
   async updateUser(updateUserDto: UserUpdateDto, id: string): Promise<User> {
+    
+    // TODO: Neste caso, o  update poderia estar no repositorio, controlando a validação do item.
+    // Dessa forma, não posso executar os testes unitários.
     const user = await this.findUserById(id);
 
     const { name, email } = updateUserDto;

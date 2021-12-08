@@ -33,4 +33,18 @@ export class User extends BaseEntity {
   @ApiProperty()
   @UpdateDateColumn()
   updatedAt: Date;
+
+  /**
+   * Necessário para os testes unitários
+   * @param user 
+   */
+  constructor(user?: Partial<User>){
+    super();
+
+    this.id = user?.id;
+    this.email = user?.email;
+    this.name = user?.name;
+    this.createdAt = user?.createdAt;
+    this.updatedAt = user?.updatedAt;
+  }
 }
