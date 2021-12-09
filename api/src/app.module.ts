@@ -24,7 +24,7 @@ import { UsersModule } from './users/users.module';
       cli: {
         migrationsDir: process.env.TYPEORM_MIGRATIONS_DIR
       },
-      synchronize: false,
+      synchronize: (process.env.TYPEORM_SYNCHRONIZE === 'true'),
     }), 
     WinstonModule.forRoot(winstonConfig),
     UsersModule
