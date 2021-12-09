@@ -10,7 +10,7 @@ import {
   /**
    *  Represents the User type and specifies its attributes.
    */
-@Entity()
+@Entity({name: "users"})
 @Unique(['email'])
 export class User extends BaseEntity {
 

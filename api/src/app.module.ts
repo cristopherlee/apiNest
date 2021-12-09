@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { Module } from '@nestjs/common';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { WinstonModule } from 'nest-winston';
@@ -10,32 +11,24 @@ import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot(typeOrmConfig), 
+    ConfigModule.forRoot(),
+    TypeOrmModule.forRoot({
+      type: process.env.TYPEORM_CONNECTION as any,
+      host: process.env.TYPEORM_HOST,
+      port: parseInt(process.env.TYPEORM_PORT),
+      username: process.env.TYPEORM_USERNAME,
+      password: process.env.TYPEORM_PASSWORD,
+      database: process.env.TYPEORM_DATABASE,
+      entities: [process.env.TYPEORM_ENTITIES],
+      migrations: [process.env.TYPEORM_MIGRATIONS],
+      cli: {
+        migrationsDir: process.env.TYPEORM_MIGRATIONS_DIR
+      },
+      synchronize: false,
+    }), 
     WinstonModule.forRoot(winstonConfig),
     UsersModule
   ],
-  /*
-  Exemplo de import com config
-  imports: [
-    ConfigModule.forRoot(),
-    TypeOrmModule.forRootAsync({
-      imports: [ConfigModule],
-      inject: [ConfigService],
-      useFactory: (configService: ConfigService) => ({
-        type: 'mariadb',
-        host: configService.get('DB_HOST', 'localhost'),
-        port: Number(configService.get('DB_PORT', 3306)),
-        username: configService.get('DB_USERNAME', 'root'),
-        password: configService.get('DB_PASSWORD', '123'),
-        database: configService.get('DB_DATABASE', 'todo'),
-        entities: [__dirname + '.entity{.js,.ts}'],
-        synchronize: true,
-      }),
-    }),
-    TodoModule,
-  ],
-
-  */
   controllers: [],
   providers: [{
     provide: APP_INTERCEPTOR,
