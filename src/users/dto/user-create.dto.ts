@@ -1,12 +1,11 @@
 /* eslint-disable prettier/prettier */
-import { ApiProperty } from "@nestjs/swagger";
-import { IsEmail, IsNotEmpty, MaxLength } from "class-validator";
+import { ApiProperty } from '@nestjs/swagger';
+import { IsEmail, IsNotEmpty, MaxLength } from 'class-validator';
 
 /**
  * Represents the creation object of type user
  */
 export class CreateUserDto {
-
   @IsNotEmpty({
     message: 'Informe um endereço de email',
   })
@@ -23,10 +22,10 @@ export class CreateUserDto {
   email: string;
 
   @IsNotEmpty({
-    message: 'Informe o nome do usuário.'
+    message: 'Informe o nome do usuário.',
   })
   @MaxLength(200, {
-    message: 'O nome deve ter menos de 200 caracteres'
+    message: 'O nome deve ter menos de 200 caracteres',
   })
   @ApiProperty()
   name: string;

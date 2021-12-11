@@ -3,22 +3,22 @@ import { NotFoundException } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import { CreateUserDto } from './dto/user-create.dto';
 import { User } from './user.entity';
-import { UserRepository } from "./users.repository";
-import { UsersService } from "./users.service";
+import { UserRepository } from './users.repository';
+import { UsersService } from './users.service';
 
 const userEntityList: User[] = [
-  new User({ name: "Nome-1", email: "email-1"}),
-  new User({ name: "Nome-2", email: "email-2"}),
-  new User({ name: "Nome-3", email: "email-3"})
+  new User({ name: 'Nome-1', email: 'email-1' }),
+  new User({ name: 'Nome-2', email: 'email-2' }),
+  new User({ name: 'Nome-3', email: 'email-3' }),
 ];
 
 /**
  * Moka todos as funções dizendo que são funções do tipo Jest.
- * @returns 
+ * @returns
  */
 const mockUserRepository = () => ({
   delete: jest.fn(),
-  
+
   // Estou informando que quero que retorne uma Promise resolvida com a lista de usuarios que eu definir
   findUsers: jest.fn().mockResolvedValue(userEntityList),
   findOne: jest.fn().mockResolvedValue(userEntityList[0]),
@@ -67,10 +67,12 @@ describe('UsersService', () => {
 
     it('Should throw as exception', async () => {
       // Arrange
-      
-      // Muda o resultado mocado da função. 
+
+      // Muda o resultado mocado da função.
       // Usando o mockRejectedValueOnce, quando o teste terminar, ele reseta para a origem
-      jest.spyOn(userRepository, 'findUsers').mockRejectedValueOnce(new Error())
+      jest
+        .spyOn(userRepository, 'findUsers')
+        .mockRejectedValueOnce(new Error());
 
       // Assert
       expect(userService.findUsers()).rejects.toThrowError();
@@ -81,7 +83,7 @@ describe('UsersService', () => {
     it('Should return a user entity successfully', async () => {
       // Act
       const result = await userService.findUserById('1');
-      
+
       // Assert
       expect(result).toEqual(userEntityList[0]);
       expect(userRepository.findOne).toHaveBeenCalledTimes(1);
@@ -89,14 +91,14 @@ describe('UsersService', () => {
 
     it('Should throw as exception', async () => {
       // Arrange
-      
-      // Muda o resultado mocado da função. 
+
+      // Muda o resultado mocado da função.
       // Usando o mockRejectedValueOnce, quando o teste terminar, ele reseta para a origem
-      jest.spyOn(userRepository, 'findOne').mockRejectedValueOnce(new Error())
+      jest.spyOn(userRepository, 'findOne').mockRejectedValueOnce(new Error());
 
       // Assert
       expect(userService.findUserById('1')).rejects.toThrowError(
-        NotFoundException
+        NotFoundException,
       );
     });
   });
@@ -105,16 +107,16 @@ describe('UsersService', () => {
     let mockCreateUserDto: CreateUserDto;
 
     beforeEach(() => {
-      mockCreateUserDto = { 
-        name: "Nome-1", 
-        email: "email-1"
+      mockCreateUserDto = {
+        name: 'Nome-1',
+        email: 'email-1',
       };
     });
 
     it('Should create a new user entity item successfully', async () => {
       // Act
-      const result  = await userService.createUser(mockCreateUserDto);
-      
+      const result = await userService.createUser(mockCreateUserDto);
+
       expect(result).toEqual(userEntityList[0]);
       expect(userRepository.createUser).toHaveBeenCalledTimes(1);
       expect(userRepository.createUser).toHaveBeenCalledWith(mockCreateUserDto);
@@ -123,9 +125,11 @@ describe('UsersService', () => {
     it('Should throw as exception', async () => {
       // Arrange
 
-      // Muda o resultado mocado da função. 
+      // Muda o resultado mocado da função.
       // Usando o mockRejectedValueOnce, quando o teste terminar, ele reseta para a origem
-      jest.spyOn(userRepository, 'createUser').mockRejectedValueOnce(new Error())
+      jest
+        .spyOn(userRepository, 'createUser')
+        .mockRejectedValueOnce(new Error());
 
       // Assert
       expect(userService.createUser(mockCreateUserDto)).rejects.toThrowError();
@@ -138,7 +142,7 @@ describe('UsersService', () => {
       userRepository.delete.mockResolvedValue({ affected: 1 });
 
       await userService.userDelete('1');
-      
+
       // Assert
       expect(userRepository.delete).toHaveBeenCalledWith({ id: '1' });
     });
@@ -148,7 +152,6 @@ describe('UsersService', () => {
 
       // Arrange
       jest.spyOn(userRepository, 'delete').mockRejectedValueOnce(new Error());
-      
 
       expect(userService.userDelete('1')).rejects.toThrowError();
     });

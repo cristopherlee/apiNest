@@ -1,22 +1,23 @@
 /* eslint-disable prettier/prettier */
-import { EntityRepository, Repository } from "typeorm";
-import { User } from "./user.entity";
+import { EntityRepository, Repository } from 'typeorm';
+import { User } from './user.entity';
 import { CreateUserDto } from './dto/user-create.dto';
-import { ConflictException, InternalServerErrorException } from "@nestjs/common";
+import {
+  ConflictException,
+  InternalServerErrorException,
+} from '@nestjs/common';
 
 /**
  * This class is responsible for performing the persistence with our database.
  */
 @EntityRepository(User)
 export class UserRepository extends Repository<User> {
-
   /**
    * This method is responsible for creating a user
-   * @param createUserDto 
+   * @param createUserDto
    * @returns object user
    */
   async createUser(createUserDto: CreateUserDto): Promise<User> {
-
     const { email, name } = createUserDto;
 
     let userValid = false;
@@ -27,7 +28,7 @@ export class UserRepository extends Repository<User> {
       errorMsg = 'Email vazio.';
     } else if (!name) {
       userValid = false;
-      errorMsg = 'O nome é Obrigatório.'
+      errorMsg = 'O nome é Obrigatório.';
     } else {
       userValid = true;
     }
@@ -43,7 +44,9 @@ export class UserRepository extends Repository<User> {
         if (error.code.toString() === '23505') {
           throw new ConflictException('Endereço de email já está em uso');
         } else {
-          throw new InternalServerErrorException('Erro ao salvar o usuário no banco de dados');
+          throw new InternalServerErrorException(
+            'Erro ao salvar o usuário no banco de dados',
+          );
         }
       }
     } else {
@@ -52,7 +55,7 @@ export class UserRepository extends Repository<User> {
   }
 
   /**
-   * 
+   *
    * This method is responsible for find all Users
    * @returns users array
    */

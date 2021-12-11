@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { User } from "../user.entity";
+import { User } from '../user.entity';
 /**
  * Represents the api's return object.
  */

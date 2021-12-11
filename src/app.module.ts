@@ -21,17 +21,19 @@ import { UsersModule } from './users/users.module';
       entities: [process.env.TYPEORM_ENTITIES],
       migrations: [process.env.TYPEORM_MIGRATIONS],
       cli: {
-        migrationsDir: process.env.TYPEORM_MIGRATIONS_DIR
+        migrationsDir: process.env.TYPEORM_MIGRATIONS_DIR,
       },
-      synchronize: (process.env.TYPEORM_SYNCHRONIZE === 'true'),
-    }), 
+      synchronize: process.env.TYPEORM_SYNCHRONIZE === 'true',
+    }),
     WinstonModule.forRoot(winstonConfig),
-    UsersModule
+    UsersModule,
   ],
   controllers: [],
-  providers: [{
-    provide: APP_INTERCEPTOR,
-    useClass: LoggerInterceptor,
-  }],
+  providers: [
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: LoggerInterceptor,
+    },
+  ],
 })
 export class AppModule {}

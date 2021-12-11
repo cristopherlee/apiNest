@@ -1,5 +1,9 @@
 /* eslint-disable prettier/prettier */
-import { Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
+import {
+  Injectable,
+  InternalServerErrorException,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UserRepository } from './users.repository';
 import { CreateUserDto } from './dto/user-create.dto';
@@ -7,7 +11,7 @@ import { User } from './user.entity';
 import { UserUpdateDto } from './dto/user-update.dto';
 
 /**
- * This class is responsible for validating the bring between 
+ * This class is responsible for validating the bring between
  * what is requested and what is returned
  */
 @Injectable()
@@ -15,7 +19,7 @@ export class UsersService {
   constructor(
     @InjectRepository(UserRepository)
     private userRepository: UserRepository,
-  ) { }
+  ) {}
 
   /**
    * This method is responsible for creating a user
@@ -32,14 +36,13 @@ export class UsersService {
    * @returns user object json
    */
   async findUserById(userId: string): Promise<User> {
-    
     try {
       const user = await this.userRepository.findOne(userId, {
         select: ['email', 'name', 'id'],
       });
-      
+
       if (!user) throw new NotFoundException('Usuário não encontrado');
-      
+
       return user;
     } catch (error) {
       throw new NotFoundException(error.message);
@@ -57,12 +60,11 @@ export class UsersService {
 
   /**
    * Responsible for user update
-   * @param updateUserDto 
-   * @param id 
+   * @param updateUserDto
+   * @param id
    * @returns message success
    */
   async updateUser(updateUserDto: UserUpdateDto, id: string): Promise<User> {
-    
     // TODO: Neste caso, o  update poderia estar no repositorio, controlando a validação do item.
     // Dessa forma, não posso executar os testes unitários.
     const user = await this.findUserById(id);
@@ -83,11 +85,11 @@ export class UsersService {
 
   /**
    * Responsible for user deletion
-   * @param userId 
+   * @param userId
    */
-  async userDelete(userId: string){
-    const result = await this.userRepository.delete({id: userId});
-    if(result.affected === 0){
+  async userDelete(userId: string) {
+    const result = await this.userRepository.delete({ id: userId });
+    if (result.affected === 0) {
       throw new NotFoundException(
         'Não foi encontrado um usuário com o ID informado',
       );

@@ -1,29 +1,31 @@
 /* eslint-disable prettier/prettier */
-import { ApiProperty } from "@nestjs/swagger";
-import { 
-  BaseEntity, Column, 
-  CreateDateColumn, Entity, 
-  PrimaryGeneratedColumn, 
-  Unique, 
-  UpdateDateColumn } from "typeorm";
+import { ApiProperty } from '@nestjs/swagger';
+import {
+  BaseEntity,
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+  Unique,
+  UpdateDateColumn,
+} from 'typeorm';
 
-  /**
-   *  Represents the User type and specifies its attributes.
-   */
-@Entity({name: "users"})
+/**
+ *  Represents the User type and specifies its attributes.
+ */
+@Entity({ name: 'users' })
 @Unique(['email'])
 export class User extends BaseEntity {
-
   @ApiProperty()
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @ApiProperty()
-  @Column({nullable: false, type: 'varchar', length: 200})
+  @Column({ nullable: false, type: 'varchar', length: 200 })
   email: string;
 
   @ApiProperty()
-  @Column({nullable: false, type: 'varchar', length: 200})
+  @Column({ nullable: false, type: 'varchar', length: 200 })
   name: string;
 
   @ApiProperty()
@@ -36,9 +38,9 @@ export class User extends BaseEntity {
 
   /**
    * Necessário para os testes unitários
-   * @param user 
+   * @param user
    */
-  constructor(user?: Partial<User>){
+  constructor(user?: Partial<User>) {
     super();
 
     this.id = user?.id;
