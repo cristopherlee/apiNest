@@ -1,184 +1,193 @@
-## Tarefa Desafio API Rst NestJs
+
+<p align="center">
+  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
+</p>
+
+
+
+# Tarefa Desafio API Rst NestJs - Parte 2
+
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
+
+[![GitHub issues](https://img.shields.io/github/issues/smarlhens/nest-boilerplate)](https://github.com/smarlhens/nest-boilerplate/issues)
+
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/smarlhens/nest-boilerplate)](https://github.com/smarlhens/nest-boilerplate/pulls)
+
+[![GitHub stars](https://img.shields.io/github/stars/smarlhens/nest-boilerplate)](https://github.com/smarlhens/nest-boilerplate/stargazers)
+
+[![GitHub forks](https://img.shields.io/github/forks/smarlhens/nest-boilerplate)](https://github.com/smarlhens/nest-boilerplate/network)
+
+[![GitHub contributors](https://img.shields.io/github/contributors/smarlhens/nest-boilerplate)](https://github.com/smarlhens/nest-boilerplate/graphs/contributors)
+
+[![GitHub license](https://img.shields.io/github/license/smarlhens/nest-boilerplate)](https://github.com/smarlhens/nest-boilerplate)
+
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/smarlhens/nest-boilerplate)
+
+![GitHub repo size](https://img.shields.io/github/repo-size/smarlhens/nest-boilerplate)
+
+## Table of contents
+
+- [Tarefa Desafio API Rst NestJs - Parte 2](#tarefa-desafio-api-rst-nestjs---parte-2)
+  - [Table of contents](#table-of-contents)
+  - [Definition of done](#definition-of-done)
+  - [Conteúdo](#conteúdo)
+          - [Commitizen](#commitizen)
+    - [Commitlint](#commitlint)
+    - [ESLint](#eslint)
+    - [Husky](#husky)
+    - [Lint-staged](#lint-staged)
+    - [Prettier](#prettier)
+  - [Running the app](#running-the-app)
+    - [development](#development)
+    - [watch mode](#watch-mode)
+    - [production mode](#production-mode)
+  - [Code scaffolding](#code-scaffolding)
+  - [Build](#build)
+  - [Test](#test)
+    - [unit tests](#unit-tests)
+    - [e2e tests](#e2e-tests)
+    - [test coverage](#test-coverage)
+
+
+## Definition of done
+
 Equipe de FRONT e BACK elaborar uma api rest com NEST desenvolvendo endpoints para o crud.
 
-Definition of done
- - [x] NestJs
- - [x] Docker
- - [x] Swagger
- - [x] Crud
- - [x] Documentação
- - [x] Apresentação
+ - [x] Melhorias em testes unitários
+ - [x] Utilização de variáveis de ambiente
+ - [x] Melhorias na documentação do Swagger
+ - [x] Uso de migrations e seeds
+ - [x] Relatório de cobertura de testes
+ - [x] Commits e versionamento semantico com hooks
+ - [ ] Integração de 2 microserviços utilizando RabbitMQ
  
 EXTRAS:  
- - [x] Testes
- - [x] Log
- - [x] Padrão
+ - [x] Auto versionamento
 
  ---------------------
 
-##### Links de acesso: 
-> API
-> - localhost:3000/users
+ ## Conteúdo
 
-> BANCO 
-> - localhost:8080
->
->servidor: pgsql
-user:     pguser
-password: pgpassword
----------------------
+###### Commitizen
 
-##### Versão atual do projeto
-1.0.0.0
+[commitizen](https://github.com/commitizen/cz-cli) is a command line utility that makes it easier to create commit messages following the [conventional commit format](https://conventionalcommits.org) specification.
 
----------------------
-##### Links úteis
+Use `git cz` instead of `git commit` to use commitizen.
 
-[LINK DA APRESENTAÇÃO](https://docs.google.com/presentation/d/1tVDc5Vw4MvyhIA1yJ-u24kkOpmsntx_EJo9sRuMCICI/edit?usp=sharing)
+[![Add and commit with Commitizen](https://github.com/commitizen/cz-cli/raw/master/meta/screenshots/add-commit.png)](https://github.com/commitizen/cz-cli/raw/master/meta/screenshots/add-commit.png)
 
-[LINK DO REPOSOTÓRIO](https://github.com/Maryucha/tarefaDesafio)
+**Configuration file**: [`.czrc`](https://github.com/smarlhens/nest7-boilerplate/blob/master/.czrc).
 
-[LINK DO TUTORIAL](https://medium.com/@iago.maiasilva/construindo-uma-api-com-nestjs-postgresql-e-docker-parte-1-criando-nosso-primeiro-endpoint-248d4b8ecc9c)
+---
 
----------------------
-### Estrutura de pastas
- Aqui temos listados as pastas que estão no projeto
+### Commitlint
 
-> - dist: Pasta que contém os arquivos de build da API
-> - logs: Contém o arquivo de log da api
->  - src: 
-    >> - configs: Contem arquivos de configuração do ORM e do Winston que faz o log
-    >> - Interceptors: Arquivo responsável em observar a api e seus estados, populando o arquivo de log;
-    >> - Users: Pasta que representa todo o módulo de usuário e suas camadas.
----------------------
+[commitlint](https://github.com/conventional-changelog/commitlint) checks if your commit messages meet the [conventional commit format](https://conventionalcommits.org).
 
-### Tecnologias utilizadas
-Aqui temos listados algumas das tecnologias usadas no projeto.
+**Configuration file**: [`.commitlintrc`](https://github.com/smarlhens/nest7-boilerplate/blob/master/.commitlintrc).
 
-- PostgreSQL V 0.0
-- NestJs
-- Docker
-- Jest
-- Swagger
-- TypeOrm
-- Winston
+In general the pattern mostly looks like this:
 
----------------------
-### Install the app
-
-```bash
-$ npm install
+```sh
+type(scope?): subject  #scope is optional
 ```
 
-### Running the app
+Are you a good `commitizen` ?
+
+---
+### ESLint
+
+[ESLint](https://eslint.org/) is a fully pluggable tool for identifying and reporting on patterns in JavaScript.
+
+**Configuration file**: [`.eslintrc.js`](https://github.com/smarlhens/nest7-boilerplate/blob/master/.eslintrc.js).
+
+For more configuration options and details, see the [configuration docs](https://eslint.org/docs/user-guide/configuring).
+
+---
+
+### Husky
+
+[Husky](https://github.com/typicode/husky) is a package that helps you create Git hooks easily.
+
+**Configuration file**: [`.huskyrc`](https://github.com/smarlhens/nest7-boilerplate/blob/master/.huskyrc).
+
+---
+
+### Lint-staged
+
+[Lint-staged](https://github.com/okonet/lint-staged) is a Node.js script that allows you to run arbitrary scripts against currently staged files.
+
+**Configuration file**: [`.lintstagedrc`](https://github.com/smarlhens/nest7-boilerplate/blob/master/.lintstagedrc).
+
+---
+
+### Prettier
+
+[Prettier](https://prettier.io/) is an opinionated code formatter.
+
+**Configuration file**: [`.prettierrc`](https://github.com/smarlhens/nest7-boilerplate/blob/master/.prettierrc).  
+**Ignore file**: [`.prettierignore`](https://github.com/smarlhens/nest7-boilerplate/blob/master/.prettierignore).
+
+For more configuration options and details, see the [configuration docs](https://prettier.io/docs/en/configuration.html).
+
+---
+
+## Running the app
+
+### development
 
 ```bash
-# watch mode
-$ npm run start:dev
+npm run start
 ```
 
-### Test
+### watch mode
 
 ```bash
-# JEST tests
-$  npm run test:watch
+npm run start:dev
 ```
----------------------
-> Autor
- >- Fundação CERTI
 
----------------------
-#### PROPOSTA DE CONVEÇÃO PARA PADRÃO DE NOMENCLATURA
+### production mode
 
-- Ao usar as convenções de nomenclatura, você facilita a leitura do código para você e outros programadores. A legibilidade do programa é muito importante. Isso indica que - menos tempo é gasto para descobrir o que o código faz.
+```bash
+npm run start:prod
+```
 
-- A seguir, estão as principais regras que devem ser seguidas por todos os identificadores:
+---
 
-> - O nome não deve conter espaços em branco.
-> - O nome não deve começar com caracteres especiais como & (e comercial), $ (dólar), _ (sublinhado).
-> - quando você decide como nomear seus identificadores, como classe, pacote, variável, constante, método etc.
+## Code scaffolding
 
-##### Classe
-- Deve começar com a letra maiúscula.
-- Deve ser um substantivo como Cor, Botão, Sistema, Tópico, etc.
-- Use palavras apropriadas, em vez de siglas
+Run `nest generate|g <schematic> <name> [options]` to generate a new Nest Element.
 
-> Exemplo:
-> public class Employee {  
->     //fragmento de código  
-> }  
->
+---
 
-##### Interface
-- Deve começar com a letra maiúscula.
-- Deve ser um adjetivo como Runnable, Remote, ActionListener.
-- Use palavras apropriadas, em vez de siglas.
+## Build
 
-> Exemplo:
-> 
-> interface Printable {  
->      //fragmento de código  
-> }
->   
+Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
+---
 
-##### Método
-- Deve começar com letra minúscula.
-- Deve ser um verbo como main(), print(), println().
-- Se o nome contiver várias palavras, inicie-o com uma letra minúscula seguida por uma letra maiúscula, como actionPerformed().
+## Test
 
-> Exemplo
-> 
-> class Employee  {  
->     //método  
->     void desenhar()  {  
->         //fragmento de código  
->     }  
-> }
->
+### unit tests
 
-##### Variável
-- Ele deve começar com uma letra minúscula, como id, nome.
-- Não deve começar com caracteres especiais como & (e comercial), $ (dólar), _ (sublinhado).
-- Se o nome contiver várias palavras, inicie-o com a letra minúscula seguida por uma letra maiúscula como firstName, lastName.
-- Evite usar variáveis de um caractere, como x, y, z.
+```bash
+npm run test
+```
 
-> Exemplo
->
-> class Employee {  
->      //variável  
->     int  id;  
->     //fragmento de código  
->   }  
+### e2e tests
 
+```bash
+npm run test:e2e
+```
 
-##### Pasta
-- Deve ser uma letra minúscula, como core, lang.
-- Se o nome contiver várias palavras, ele deverá ser separado por pontos (.) Como core.util, core.lang.
+### test coverage
 
-> Exemplo
+```bash
+npm run test:cov
+```
 
-> core com.config; //pasta  
->class Employee {  
->    //fragmento de código  
-> }  
-
-
-##### Constante
-- Deve estar em letras maiúsculas, como VERMELHO, AMARELO.
-- Se o nome contiver várias palavras, ele deverá ser separado por um sublinhado (_), como MAX_PRIORITY.
-- Pode conter dígitos, mas não como a primeira letra.
-
->Exemplo
->
-> class Employee {  
->   //constante&  
->   final static int MIN_AGE = 18 ;  
->    //fragmento de código  
->}  
-
-
-##### CamelCase em convenções de nomenclatura
-Podemos seguir a sintaxe camelCase para nomear a classe, interface, método e variável.
-
-- Se o nome for combinado com duas palavras, a segunda palavra começará com letras maiúsculas sempre como actionPerformed(), firstName, ActionEvent, ActionListener, etc.  
+---
