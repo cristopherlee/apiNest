@@ -9,7 +9,7 @@ import { User } from '../src/users/user.entity';
 // import supertest from 'supertest';
 import { CreateUserDto } from 'src/users/dto/user-create.dto';
 
-import * as request from 'supertest';
+import * as request from 'supertest'; 
 import { Repository } from 'typeorm';  
 
 const userEntityList = [
