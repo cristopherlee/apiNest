@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { NotFoundException, UnprocessableEntityException } from '@nestjs/common';
+import { NotFoundException } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import { CreateUserDto } from './dto/user-create.dto';
 import { User } from './user.entity';
