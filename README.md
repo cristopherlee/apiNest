@@ -13,21 +13,21 @@
 
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 
-[![GitHub issues](https://img.shields.io/github/issues/smarlhens/nest-boilerplate)](https://github.com/smarlhens/nest-boilerplate/issues)
+[![GitHub issues](https://img.shields.io/github/issues/cristopherlee/apiNest)](https://github.com/cristopherlee/apiNest/issues)
 
-[![GitHub pull requests](https://img.shields.io/github/issues-pr/smarlhens/nest-boilerplate)](https://github.com/smarlhens/nest-boilerplate/pulls)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/cristopherlee/apiNest)](https://github.com/cristopherlee/apiNest/pulls)
 
-[![GitHub stars](https://img.shields.io/github/stars/smarlhens/nest-boilerplate)](https://github.com/smarlhens/nest-boilerplate/stargazers)
+[![GitHub stars](https://img.shields.io/github/stars/cristopherlee/apiNest)](https://github.com/cristopherlee/apiNest/stargazers)
 
-[![GitHub forks](https://img.shields.io/github/forks/smarlhens/nest-boilerplate)](https://github.com/smarlhens/nest-boilerplate/network)
+[![GitHub forks](https://img.shields.io/github/forks/cristopherlee/apiNest)](https://github.com/cristopherlee/apiNest/network)
 
-[![GitHub contributors](https://img.shields.io/github/contributors/smarlhens/nest-boilerplate)](https://github.com/smarlhens/nest-boilerplate/graphs/contributors)
+[![GitHub contributors](https://img.shields.io/github/contributors/cristopherlee/apiNest)](https://github.com/cristopherlee/apiNest/graphs/contributors)
 
-[![GitHub license](https://img.shields.io/github/license/smarlhens/nest-boilerplate)](https://github.com/smarlhens/nest-boilerplate)
+[![GitHub license](https://img.shields.io/github/license/cristopherlee/apiNest)](https://github.com/cristopherlee/apiNest)
 
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/smarlhens/nest-boilerplate)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/cristopherlee/apiNest)
 
-![GitHub repo size](https://img.shields.io/github/repo-size/smarlhens/nest-boilerplate)
+![GitHub repo size](https://img.shields.io/github/repo-size/cristopherlee/apiNest)
 
 ## Table of contents
 
@@ -39,7 +39,6 @@
     - [Commitlint](#commitlint)
     - [ESLint](#eslint)
     - [Husky](#husky)
-    - [Lint-staged](#lint-staged)
     - [Prettier](#prettier)
   - [Running the app](#running-the-app)
     - [development](#development)
@@ -114,14 +113,6 @@ For more configuration options and details, see the [configuration docs](https:/
 [Husky](https://github.com/typicode/husky) is a package that helps you create Git hooks easily.
 
 **Configuration file**: [`.huskyrc`](https://github.com/smarlhens/nest7-boilerplate/blob/master/.huskyrc).
-
----
-
-### Lint-staged
-
-[Lint-staged](https://github.com/okonet/lint-staged) is a Node.js script that allows you to run arbitrary scripts against currently staged files.
-
-**Configuration file**: [`.lintstagedrc`](https://github.com/smarlhens/nest7-boilerplate/blob/master/.lintstagedrc).
 
 ---
 
