@@ -1,3 +1,5 @@
+# SWAGGER
+
 Pasta API-DOC
 
 Pasta que contem os tipos typescript para modelar as informações que vão aparecer na documentação.
