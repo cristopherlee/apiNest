@@ -7,6 +7,7 @@ import { WinstonModule } from 'nest-winston';
 import { winstonConfig } from './configs/winston.configs';
 import { LoggerInterceptor } from './interceptors/logger.interceptor';
 import { UsersModule } from './users/users.module';
+import { PhotosModule } from './photos/photos.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { UsersModule } from './users/users.module';
     }),
     WinstonModule.forRoot(winstonConfig),
     UsersModule,
+    PhotosModule,
   ],
   controllers: [],
   providers: [

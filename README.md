@@ -66,8 +66,9 @@ Equipe de FRONT e BACK elaborar uma api rest com NEST desenvolvendo endpoints pa
  
 EXTRAS:  
  - [x] Versionamento Semântico
- - [x] Compodoc 
+ - [x] Compodoc
  - [x] Lint-Staged
+ - [x] Relacionamentos entre entidades com Seeding e onDelete Cascade
 
  ---------------------
 

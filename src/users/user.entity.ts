@@ -1,3 +1,4 @@
+import { Photo } from './../photos/entities/photo.entity';
 /* eslint-disable prettier/prettier */
 import { ApiProperty } from '@nestjs/swagger';
 import {
@@ -5,10 +6,12 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   Unique,
   UpdateDateColumn,
 } from 'typeorm';
+import { truncate } from 'fs/promises';
 
 /**
  *  Represents the User type and specifies its attributes.
@@ -29,6 +32,10 @@ export class User extends BaseEntity {
   name: string;
 
   @ApiProperty()
+  @OneToMany(() => Photo, (photo: Photo) => photo.author)
+  public photos: Photo[];
+
+  @ApiProperty()
   @CreateDateColumn()
   createdAt: Date;
 
@@ -46,6 +53,7 @@ export class User extends BaseEntity {
     this.id = user?.id;
     this.email = user?.email;
     this.name = user?.name;
+    this.photos = user?.photos;
     this.createdAt = user?.createdAt;
     this.updatedAt = user?.updatedAt;
   }
