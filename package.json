@@ -103,11 +103,11 @@
     ]
   },
   "lint-staged": {
-    "src/**/*.{js,jsx}": [
-      "eslint . --fix", "git add"
+    "src/**/*.{js,jsx,tx}": [
+      "eslint . --fix"
     ],
-    "src/**/*.scss": [
-      "stylelint --syntax scss --fix", "git add"
+    "src/**/*.{scss,ts}": [
+      "prettier --write"
     ]
   },
   "husky": {
