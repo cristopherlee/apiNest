@@ -6,7 +6,7 @@ export class SeedingPhotos1639459462377 implements MigrationInterface {
   name = 'SeedingPhotos1639459462377';
 
   public async up(queryRunner: QueryRunner): Promise<void> {
-    const test = await queryRunner.manager.save(
+    const author = await queryRunner.manager.save(
       queryRunner.manager.create<User>(User, {
         name: 'Usuário com fotos',
         email: 'photos@certi.org.br',
@@ -14,11 +14,11 @@ export class SeedingPhotos1639459462377 implements MigrationInterface {
       }),
     );
 
-    const photo = await queryRunner.manager.save(
+    await queryRunner.manager.save(
       queryRunner.manager.create<Photo>(Photo, {
         name: 'Primeira Foto',
-        description: 'Foto do usuário com foto',
-        author: test,
+        description: 'Descrição da foto',
+        author: author,
         createdAt: new Date(),
       }),
     );
