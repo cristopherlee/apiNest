@@ -65,7 +65,9 @@ Equipe de FRONT e BACK elaborar uma api rest com NEST desenvolvendo endpoints pa
  - [ ] Integração de 2 microserviços utilizando RabbitMQ
  
 EXTRAS:  
- - [x] Auto versionamento
+ - [x] Versionamento Semântico
+ - [x] Compodoc 
+ - [x] Lint-Staged
 
  ---------------------
 
