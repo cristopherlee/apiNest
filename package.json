@@ -28,7 +28,8 @@
     "lint:scss": "stylelint 'src/**/*.scss' --syntax scss",
     "lint:scss:fix": "stylelint 'src/**/*.scss' --syntax scss --fix",
     "lint:js": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
-    "lint:js:fix": "npm run lint:js -- --fix"
+    "lint:js:fix": "npm run lint:js -- --fix",
+    "markdownlint:fix": "markdownlint **/*.md"
   },
   "dependencies": {
     "@nestjs/common": "^8.0.0",
@@ -70,6 +71,7 @@
     "husky": "^7.0.4",
     "jest": "^27.2.5",
     "lint-staged": "^12.1.2",
+    "markdownlint": "^0.24.0",
     "prettier": "^2.3.2",
     "source-map-support": "^0.5.20",
     "standard-version": "^9.3.2",

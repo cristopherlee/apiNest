@@ -3,8 +3,6 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
 </p>
 
-
-
 # Tarefa Desafio API Rst NestJs - Parte 2
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
@@ -51,28 +49,28 @@
     - [e2e tests](#e2e-tests)
     - [test coverage](#test-coverage)
 
-
 ## Definition of done
 
 Equipe de FRONT e BACK elaborar uma api rest com NEST desenvolvendo endpoints para o crud.
 
- - [x] Melhorias em testes unitários
- - [x] Utilização de variáveis de ambiente
- - [x] Melhorias na documentação do Swagger
- - [x] Uso de migrations e seeds
- - [x] Relatório de cobertura de testes
- - [x] Commits e versionamento semantico com hooks
- - [ ] Integração de 2 microserviços utilizando RabbitMQ
- 
+- [x] Melhorias em testes unitários
+- [x] Utilização de variáveis de ambiente
+- [x] Melhorias na documentação do Swagger
+- [x] Uso de migrations e seeds
+- [x] Relatório de cobertura de testes
+- [x] Commits e versionamento semantico com hooks
+- [ ] Integração de 2 microserviços utilizando RabbitMQ
+
 EXTRAS:  
- - [x] Versionamento Semântico
- - [x] Compodoc
- - [x] Lint-Staged
- - [x] Relacionamentos entre entidades com Seeding e onDelete Cascade
+
+- [x] Versionamento Semântico
+- [x] Compodoc
+- [x] Lint-Staged
+- [x] Relacionamentos entre entidades com Seeding e onDelete Cascade
 
  ---------------------
 
- ## Conteúdo
+## Conteúdo
 
 ###### Commitizen
 
@@ -101,6 +99,7 @@ type(scope?): subject  #scope is optional
 Are you a good `commitizen` ?
 
 ---
+
 ### ESLint
 
 [ESLint](https://eslint.org/) is a fully pluggable tool for identifying and reporting on patterns in JavaScript.
