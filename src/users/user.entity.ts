@@ -11,7 +11,6 @@ import {
   Unique,
   UpdateDateColumn,
 } from 'typeorm';
-import { truncate } from 'fs/promises';
 
 /**
  *  Represents the User type and specifies its attributes.

@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import {
-  utilities as nestWinstonModuleUtilities,
   WinstonModuleOptions,
+  utilities as nestWinstonModuleUtilities,
 } from 'nest-winston';
 import * as winston from 'winston';
 

@@ -1,0 +1,12 @@
+package.json
+package-lock.json
+dist
+documentation/**
+Documentação/**
+storage/**
+e2e/**
+test/**
+karma.conf.js
+src/config/**
+src/migrations/**
+src/*.ts

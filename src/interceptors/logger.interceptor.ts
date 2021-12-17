@@ -1,9 +1,9 @@
 import {
-  Injectable,
-  Inject,
-  NestInterceptor,
   CallHandler,
   ExecutionContext,
+  Inject,
+  Injectable,
+  NestInterceptor,
 } from '@nestjs/common';
 import { Logger } from 'winston';
 import { Observable } from 'rxjs';

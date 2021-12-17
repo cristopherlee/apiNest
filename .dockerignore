@@ -1,0 +1,14 @@
+**/node_modules/
+**/build/
+**/documentation/
+**/Documentação/
+**/e2e
+**/dist
+**/storage
+**/docker-compose*
+**/Dockerfile**
+**/.env*
+README.md
+INTERVIEW.md
+CHANGELOG.md
+LICENSE
