@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/cristopherlee/apiNest/compare/v0.0.4...v0.0.5) (2021-12-22)
+
+
+### Features
+
+* documentação ([8cd52ea](https://github.com/cristopherlee/apiNest/commit/8cd52eabd29e6a419756b7c6fac2d4fee24131c5))
+
 ### [0.0.4](https://github.com/cristopherlee/apiNest/compare/v0.0.3...v0.0.4) (2021-12-14)
 
 ### Features
