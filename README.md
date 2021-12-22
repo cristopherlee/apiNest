@@ -87,7 +87,7 @@ $ nest new nest-api
 $ cd nest-api
 
 # Iniciar o projeto com comando --watch para recompilar
-$ npm run start:dev
+$ npm run start:dev 
 
 # Comando que gera toda estrutura de um entity
 $ nest g resource
