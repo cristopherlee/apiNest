@@ -13,7 +13,7 @@ export class CreateUserDto {
     {},
     {
       message: 'Informe um endereço de email válido',
-    },
+    }
   )
   @MaxLength(200, {
     message: 'O endereço de email deve ter menos de 200 caracteres',
@@ -27,6 +27,9 @@ export class CreateUserDto {
   @MaxLength(200, {
     message: 'O nome deve ter menos de 200 caracteres',
   })
-  @ApiProperty()
+  @ApiProperty({
+    type: String,
+    description: 'name of user',
+  })
   name: string;
 }

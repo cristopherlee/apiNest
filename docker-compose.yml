@@ -2,33 +2,65 @@ version: '3'
 
 services:
 
-  app:
-    build: .
-    entrypoint: dockerize -wait tcp://pgsql:5432 -timeout 59s ./.docker/entrypoint.sh
-    container_name: nestjs-api
+  ##################################### NESTJS Dev #####################################
+  nest-api-dev2:
+    container_name: nestjs_api_dev
+    image: nestjs-api-dev:1.0.0
+    build:
+        context: .
+        target: development
+        dockerfile: ./Dockerfile
+    command: npm run start:dev
     ports:
-      - 3000:3000
+        - 3001:3000
+    networks:
+        - nestjs-network
     volumes:
-      - .:/home/node/app
+        - .:/usr/src/app
+        - /usr/src/app/node_modules
     depends_on: 
       - pgsql
+    restart: unless-stopped
+
+  ##################################### NESTJS Production #####################################
+  nest-api-prod:
+    container_name: nestjs_api_prod
+    image: nestjs-api-prod:1.0.0
+    build:
+        context: .
+        target: production
+        dockerfile: ./Dockerfile
+    command: npm run start:prod
+    ports:
+        - 3000:3000
     networks:
-      - nestjs-network
+        - nestjs-network
+    volumes:
+        - .:/usr/src/app
+        - /usr/src/app/node_modules
+    depends_on: 
+      - pgsql
+    restart: unless-stopped
       
+  ##################################### POSTGRESQL #####################################
   pgsql:
     image: postgres:alpine
-    ports:
-      - '5432:5432'
+    # build: ./.docker/postgres
     container_name: 'pgsql'
     restart: always
-    volumes:
-      - ./storage/pg-data:/var/lib/postgresql/data
+    tty: true
+    ports:
+      - '5432:5432'
     environment:
       POSTGRES_USER: pguser
       POSTGRES_PASSWORD: pgpassword
+      POSTGRES_DB: teste
+    volumes:
+      - ./storage/pg-data:/var/lib/postgresql/data
     networks:
       - nestjs-network
 
+  ##################################### ADMINER #####################################
   adminer:
     image: adminer
     restart: always

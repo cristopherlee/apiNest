@@ -7,7 +7,10 @@ export class UserResponseSwagger {
   @ApiProperty()
   email: string;
 
-  @ApiProperty()
+  @ApiProperty({
+    type: String,
+    description: 'name of user',
+  })
   name: string;
 
   @ApiProperty()

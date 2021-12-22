@@ -11,6 +11,7 @@ import {
   Unique,
   UpdateDateColumn,
 } from 'typeorm';
+import { Exclude } from 'class-transformer';
 
 /**
  *  Represents the User type and specifies its attributes.
@@ -35,11 +36,12 @@ export class User extends BaseEntity {
   public photos: Photo[];
 
   @ApiProperty()
-  @CreateDateColumn()
+  @CreateDateColumn({ type: 'timestamp' })
   createdAt: Date;
 
+  @Exclude()
   @ApiProperty()
-  @UpdateDateColumn()
+  @UpdateDateColumn({ type: 'timestamp' })
   updatedAt: Date;
 
   /**

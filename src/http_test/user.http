@@ -1,0 +1,39 @@
+GET http://localhost:3000/users
+
+###
+
+GET http://localhost:3000/users/661329b1-548a-4cfe-b90f-86e8a1171fb0
+
+###
+
+PATCH http://localhost:3000/users/81533ef7-e89c-4651-b5e7-015e110303ff
+Content-Type: application/json
+
+{
+    "name": "CERTI 1001",
+    "email": "testando@certi.org.br"
+}
+
+###
+
+DELETE http://localhost:3000/users/661329b1-548a-4cfe-b90f-86e8a1171fb0
+
+###
+
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "name": "CERTI 1000",
+    "email": "testando@certi.org.br"
+}
+
+###
+
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "name": "",
+    "email": "testando@certi.org.br"
+}

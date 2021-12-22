@@ -1,14 +1,45 @@
-FROM node:14.15.4-alpine3.12
+FROM node:12.19.0-alpine3.9 AS development
 
-RUN apk add --no-cache bash
+WORKDIR /usr/src/app
 
-RUN npm i -g @nestjs/cli@8.0.0
+COPY package*.json ./
 
-ENV DOCKERIZE_VERSION v0.6.1
-RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
-    && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
-    && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+RUN npm install glob rimraf
 
-USER node
+RUN npm install --only=development
 
-WORKDIR /home/node/app
+COPY . .
+
+RUN npm run build
+
+FROM node:12.19.0-alpine3.9 as production
+
+ARG NODE_ENV=production
+ENV NODE_ENV=${NODE_ENV}
+
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+
+RUN npm install --only=production
+
+COPY . .
+
+COPY --from=development /usr/src/app/dist ./dist
+
+CMD ["node", "dist/main"]
+
+# FROM node:14.15.4-alpine3.12
+
+# RUN apk add --no-cache bash
+
+# RUN npm i -g @nestjs/cli@8.0.0
+
+# ENV DOCKERIZE_VERSION v0.6.1
+# RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+#    && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+#     && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+
+# USER node
+
+# WORKDIR /home/node/app

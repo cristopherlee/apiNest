@@ -5,6 +5,7 @@ documentation
 
 coverage
 storage
+.docker/**
 
 dist
 # Logs

@@ -2,6 +2,7 @@ import { UserResponseSwagger } from '../api-doc/user-response.swagger';
 /* eslint-disable prettier/prettier */
 import {
   Body,
+  ClassSerializerInterceptor,
   Controller,
   Delete,
   Get,
@@ -10,6 +11,7 @@ import {
   Param,
   Patch,
   Post,
+  UseInterceptors,
   ValidationPipe,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
@@ -32,8 +34,9 @@ import { NotFoundSwagger } from '../helpers/swagger/not-found.swagger';
 /**
  * This class represents the reuturn transaction object
  */
+@UseInterceptors(ClassSerializerInterceptor)
 @Controller('users')
-@ApiTags('Users')
+@ApiTags('Users') // Aparecerão agrupados no swagger
 export class UsersController {
   constructor(private usersService: UsersService) {}
 
@@ -68,9 +71,7 @@ export class UsersController {
     type: BadRequestSwagger,
     description: 'Parâmetros inválidos.',
   })
-  async createUser(
-    @Body(ValidationPipe) createUserDto: CreateUserDto,
-  ): Promise<ReturnUserDto> {
+  async createUser(@Body(ValidationPipe) createUserDto: CreateUserDto): Promise<ReturnUserDto> {
     const user = await this.usersService.createUser(createUserDto);
     return {
       user,
@@ -117,10 +118,7 @@ export class UsersController {
     type: BadRequestSwagger,
     description: 'Dados inválidos.',
   })
-  async updateUser(
-    @Body(ValidationPipe) updateUserDto: UserUpdateDto,
-    @Param('id') id: string,
-  ) {
+  async updateUser(@Body(ValidationPipe) updateUserDto: UserUpdateDto, @Param('id') id: string) {
     return this.usersService.updateUser(updateUserDto, id);
   }
 

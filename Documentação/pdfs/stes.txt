@@ -1,0 +1,17 @@
+https://wanago.io/2020/06/01/api-nestjs-error-handling-validation/
+
+https://docs.nestjs.com/techniques/validation
+
+Comandos utilizados
+-------------------------------------------------------------------
+Criar um migration
+npm run typeorm migration:generate -- --name CreateUserTable
+
+npm run typeorm migration:run
+
+Criando um model
+npm run typeorm entity:create -- --name=teste
+
+npm install --save @nestjs/swagger swagger swagger-ui-express
+
+npm install --save class-validator

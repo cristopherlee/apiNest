@@ -1,43 +1,74 @@
-/*import { UserRepository } from '../src/users/users.repository';
+import { User } from '../src/users/user.entity';
+import { UserRepository } from '../src/users/users.repository';
 import { INestApplication } from "@nestjs/common";
 import { Test } from "@nestjs/testing";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { typeOrmConfig } from "../src/configs/typeorm.config";
 import { UsersModule } from "../src/users/users.module";
-import { UsersService } from '../src/users/users.service';
-import { User } from '../src/users/user.entity';
 // import supertest from 'supertest';
-import { CreateUserDto } from 'src/users/dto/user-create.dto';
 
-import * as request from 'supertest';
-import { Repository } from 'typeorm';
-
-const userEntityList = [
-    {
-        id: undefined,
-        email: 'email-1',
-        name: 'Nome-1',
-        createdAt: undefined,
-        updatedAt: undefined
-    },
-    {
-        id: undefined,
-        email: 'email-2',
-        name: 'Nome-2',
-        createdAt: undefined,
-        updatedAt: undefined
-    },
-    {
-        id: undefined,
-        email: 'email-3',
-        name: 'Nome-3',
-        createdAt: undefined,
-        updatedAt: undefined
-    }
-];
+import supertest, * as request from 'supertest';
 
 describe('Users', () => {
     let app: INestApplication;
+    let repository: UserRepository;
+
+    beforeAll(async () => {
+        const module = await Test.createTestingModule({
+            imports: [
+                UsersModule,
+                // Use the e2e_test database to run the tests
+                TypeOrmModule.forRoot({
+                    type: process.env.TYPEORM_CONNECTION as any,
+                    host: process.env.TYPEORM_HOST,
+                    port: parseInt(process.env.TYPEORM_PORT),
+                    username: process.env.TYPEORM_USERNAME,
+                    password: process.env.TYPEORM_PASSWORD,
+                    database: process.env.TYPEORM_DATABASE_TEST,
+                    entities: [User],
+                    synchronize: false,
+                }),
+            ],
+        }).compile();
+        app = module.createNestApplication();
+
+        //repository = module.get('UserRepository');
+
+        await app.init();
+    });
+
+    afterEach(async () => {
+        //await repository.query(`DELETE FROM users;`);
+    });
+
+    afterAll(async () => {
+        await app.close();
+    });
+
+    describe('GET /users', () => {
+        it('should return an array of users', async () => {
+            // Pre-populate the DB with some dummy users
+            /*
+            await repository.save([
+                { name: 'test-name-0', email: 'test-name-0@email.com' },
+                { name: 'test-name-1', email: 'test-name-1@email.com' },
+            ]);
+
+            // Run your end-to-end test
+            const { body } = await supertest.agent(app.getHttpServer())
+                .get('/users')
+                .set('Accept', 'application/json')
+                .expect('Content-Type', /json/)
+                .expect(200);
+
+            expect(body[0].name).toEqual('test-name-0');*/
+        });
+    });
+});
+
+/*
+describe('Users', () => {
+    let app: INestApplication;
+    
     let catsService = {
         createUser: (createUserDto: CreateUserDto) => userEntityList[0],
         findUsers: () => userEntityList
@@ -96,5 +127,5 @@ describe('Users', () => {
     afterAll(async () => {
         await app.close();
     });
-});
-*/
+});*/
+

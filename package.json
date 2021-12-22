@@ -29,7 +29,7 @@
     "lint:scss:fix": "stylelint 'src/**/*.scss' --syntax scss --fix",
     "lint:js": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "lint:js:fix": "npm run lint:js -- --fix",
-    "markdownlint:fix": "markdownlint **/*.md"
+    "markdownlint:fix": "markdownlint **/*.md -f"
   },
   "dependencies": {
     "@nestjs/common": "^8.0.0",

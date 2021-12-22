@@ -32,6 +32,8 @@
 - [Tarefa Desafio API Rst NestJs - Parte 2](#tarefa-desafio-api-rst-nestjs---parte-2)
   - [Table of contents](#table-of-contents)
   - [Definition of done](#definition-of-done)
+  - [Comandos utilizados em sequência](#comandos-utilizados-em-sequência)
+  - [Lições aprendidas](#lições-aprendidas)
   - [Conteúdo](#conteúdo)
           - [Commitizen](#commitizen)
     - [Commitlint](#commitlint)
@@ -66,9 +68,58 @@ EXTRAS:
 - [x] Versionamento Semântico
 - [x] Compodoc
 - [x] Lint-Staged
+- [x] Testes de integração manuais
+- [x] Documentação Swagger com versão automática
 - [x] Relacionamentos entre entidades com Seeding e onDelete Cascade
 
  ---------------------
+
+## Comandos utilizados em sequência
+
+```bash
+# Instalar globalemnte o CLI
+$ npm i @nestjs/cli
+
+# Criar projeto novo
+$ nest new nest-api
+
+# Entrar na pasta do projeto
+$ cd nest-api
+
+# Iniciar o projeto com comando --watch para recompilar
+$ npm run start:dev
+
+# Comando que gera toda estrutura de um entity
+$ nest g resource
+
+# Código de criação de migrations do banco de dados
+$ npm run typeorm migration:create -- --n create-product-table
+
+# Instalação de pacotes para ORM
+$ npm run typeorm migration:run
+
+# Instalacao do PG
+$ npm install pg --save
+
+# Instalação do swagger
+$ npm install --save @nestjs/swagger swagger swagger-ui-express class-validator
+```
+
+## Lições aprendidas
+
+```bash
+# Ao rodar o projeto em ambiente totalmente linux, preciso alterar a permissão do arquivo entrypoint somente 1 vez
+$ chmod +x .docker/entrypoint.sh quando ele nao achar o arquivo
+
+# Veja todas as possibilidades do comando nest
+$ comando nest mostra os comandos possiveis como resource
+
+# Ao tentar criar um migration  e estiver dando permissão negada, melhor recriar a pasta node_modules dentro do ambiente linux
+$ rm -rf node_modules / npm cache clear / npm install
+
+# ALEM DE RODAR O DOCKER, PRECISA RODAR O COMANDO PARA TESTAR A API
+$ npm run start:dev
+```
 
 ## Conteúdo
 
