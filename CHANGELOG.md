@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.6](https://github.com/cristopherlee/apiNest/compare/v0.0.5...v0.0.6) (2021-12-22)
+
+
+### Features
+
+* **component:** teste ([c086ee6](https://github.com/cristopherlee/apiNest/commit/c086ee6000163279a644827e86203bfa1a0cb03c)), closes [#123](https://github.com/cristopherlee/apiNest/issues/123)
+
 ### [0.0.5](https://github.com/cristopherlee/apiNest/compare/v0.0.4...v0.0.5) (2021-12-22)
 
 
