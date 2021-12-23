@@ -1,9 +1,9 @@
-import { User } from '../src/users/user.entity';
-import { UserRepository } from '../src/users/users.repository';
 import { INestApplication } from "@nestjs/common";
 import { Test } from "@nestjs/testing";
 import { TypeOrmModule } from "@nestjs/typeorm";
+import { User } from "../src/users/user.entity";
 import { UsersModule } from "../src/users/users.module";
+import { UserRepository } from "../src/users/users.repository";
 // import supertest from 'supertest';
 
 import supertest, * as request from 'supertest';
@@ -31,13 +31,13 @@ describe('Users', () => {
         }).compile();
         app = module.createNestApplication();
 
-        //repository = module.get('UserRepository');
+        repository = module.get('UserRepository');
 
         await app.init();
     });
 
     afterEach(async () => {
-        //await repository.query(`DELETE FROM users;`);
+        await repository.query(`DELETE FROM users;`);
     });
 
     afterAll(async () => {
@@ -47,7 +47,6 @@ describe('Users', () => {
     describe('GET /users', () => {
         it('should return an array of users', async () => {
             // Pre-populate the DB with some dummy users
-            /*
             await repository.save([
                 { name: 'test-name-0', email: 'test-name-0@email.com' },
                 { name: 'test-name-1', email: 'test-name-1@email.com' },
@@ -60,7 +59,7 @@ describe('Users', () => {
                 .expect('Content-Type', /json/)
                 .expect(200);
 
-            expect(body[0].name).toEqual('test-name-0');*/
+            expect(body[0].name).toEqual('test-name-0');
         });
     });
 });

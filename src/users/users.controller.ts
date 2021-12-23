@@ -1,4 +1,3 @@
-import { UserResponseSwagger } from '../api-doc/user-response.swagger';
 /* eslint-disable prettier/prettier */
 import {
   Body,
@@ -30,6 +29,7 @@ import {
 import { User } from './user.entity';
 import { BadRequestSwagger } from '../helpers/swagger/bad-request.swagger';
 import { NotFoundSwagger } from '../helpers/swagger/not-found.swagger';
+import { UserResponseSwagger } from '../api-doc/user-response.swagger';
 
 /**
  * This class represents the reuturn transaction object
